@@ -2,15 +2,17 @@
   "name": "kugy-bot",
   "version": "1.2.0",
   "description": "Discord bot with FFmpeg v7 compatibility, music functionality, and AI chat using OpenRouter",
-  "main": "index-ffmpeg-v7-complete.mjs",
+  "main": "index-ffmpeg-v7-with-ai.mjs",
   "type": "module",
   "scripts": {
-    "start": "node index-ffmpeg-v7-complete.mjs",
+    "start": "node index-ffmpeg-v7-with-ai.mjs",
     "start:legacy": "node Index.mjs",
     "start:local": "node index-without-lavalink.mjs",
-    "dev": "node --watch index-ffmpeg-v7-complete.mjs",
+    "start:compatible": "node index-ffmpeg-v7-compatible.mjs",
+    "dev": "node --watch index-ffmpeg-v7-with-ai.mjs",
     "dev:legacy": "node --watch Index.mjs",
     "dev:local": "node --watch index-without-lavalink.mjs",
+    "dev:compatible": "node --watch index-ffmpeg-v7-compatible.mjs",
     "clean": "./cleanup-and-restart.sh",
     "ffmpeg:check": "ffmpeg -version",
     "test:ai": "echo 'Testing AI chat with OpenRouter...'"
@@ -24,7 +26,8 @@
     "ffmpeg-static": "^5.2.0",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "express": "^4.18.2",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "node-fetch": "^3.3.2"
   },
   "optionalDependencies": {
     "@discord-player/extractor": "^7.1.0"
@@ -41,7 +44,7 @@
     "youtube",
     "ai-chat",
     "openrouter",
-    "llama",
+    "claude",
     "nodejs"
   ],
   "author": "KugySoul",
