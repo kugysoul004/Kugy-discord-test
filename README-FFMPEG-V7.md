@@ -80,7 +80,24 @@ npm run ffmpeg:check
 npm run start:legacy
 ```
 
-## 📊 Commands Baru
+## 📊 Commands Lengkap
+
+### 🎵 **Music Commands**
+- `!play <lagu/url>` - Putar musik dari YouTube/URL
+- `!skip` atau `!s` - Skip lagu saat ini
+- `!stop` - Stop musik dan keluar dari voice channel
+- `!pause` - Pause musik
+- `!resume` - Resume musik yang di-pause
+- `!queue` atau `!q` - Lihat antrian musik
+- `!loop` - Toggle loop mode (off → track → queue)
+
+### 🤖 **AI Chat Commands**
+- `!chat <pesan>` - Chat dengan Kugy AI
+- `@Kugy <pesan>` - Mention bot untuk chat
+- `!help` - Tampilkan semua commands
+
+### 🔧 **System Commands**
+- `!ffmpeg` - Check FFmpeg status dan compatibility
 
 ### `!ffmpeg` - Check FFmpeg Information
 ```
@@ -89,6 +106,35 @@ npm run start:legacy
 🔢 Version: 7
 ✅ Status: Available
 🔧 Compatibility: Optimized for v7
+```
+
+### `!chat` - AI Chat dengan OpenRouter
+```
+User: !chat Halo Kugy, bagaimana cara fix audio resource missing?
+Kugy AI: Halo! 😊 Untuk fix audio resource missing dengan FFmpeg v7:
+
+1. Pastikan FFmpeg v7 terinstall dengan `!ffmpeg`
+2. Bot sudah auto-detect dan gunakan konfigurasi optimized
+3. Jika masih missing, bot akan auto-retry
+4. Coba restart bot jika masalah berlanjut
+
+Bot ini sudah dioptimasi khusus untuk FFmpeg v7! 🎵
+```
+
+### `!help` - Complete Help Menu
+```
+🎵 Kugy Music Bot - FFmpeg v7 Compatible
+Bot musik Discord dengan dukungan FFmpeg v7 dan fitur AI chat!
+
+🎵 Music Commands
+🤖 AI Commands  
+🔧 System Commands
+🎯 Features
+✅ FFmpeg v7 Compatible
+✅ YouTube Music Support
+✅ Interactive Button Controls
+✅ AI Chat dengan OpenRouter
+✅ Real-time Dashboard
 ```
 
 ## 🔍 Debugging Features
@@ -115,8 +161,15 @@ npm run start:legacy
 ```env
 DISCORD_TOKEN=your_discord_token
 MONGO_URI=your_mongodb_uri
+OPENROUTER_API_KEY=your_openrouter_api_key
 PORT=3000
 ```
+
+### OpenRouter Setup
+1. Daftar di [OpenRouter.ai](https://openrouter.ai/)
+2. Dapatkan API key dari dashboard
+3. Tambahkan ke `.env` file sebagai `OPENROUTER_API_KEY`
+4. Bot akan menggunakan Claude 3.5 Sonnet untuk AI chat
 
 ### FFmpeg Requirements
 - **Minimum**: FFmpeg v7.0.0

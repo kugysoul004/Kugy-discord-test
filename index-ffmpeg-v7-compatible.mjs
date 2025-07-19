@@ -717,6 +717,59 @@ client.on("messageCreate", async (message) => {
 
         message.reply({ embeds: [embed] });
     }
+
+    if (command === "help") {
+        const embed = new EmbedBuilder()
+            .setColor('#0099FF')
+            .setTitle('🎵 Kugy Music Bot - FFmpeg v7 Compatible')
+            .setDescription('Bot musik Discord dengan dukungan FFmpeg v7 dan fitur AI chat!')
+            .addFields(
+                { name: '🎵 Music Commands', value: '`!play <lagu/url>` - Putar musik\n`!skip` - Skip lagu\n`!stop` - Stop musik\n`!pause` - Pause musik\n`!resume` - Resume musik\n`!queue` - Lihat antrian\n`!loop` - Toggle loop mode', inline: false },
+                { name: '🤖 AI Commands', value: '`!chat <pesan>` - Chat dengan Kugy AI\n`@Kugy <pesan>` - Mention untuk chat', inline: false },
+                { name: '🔧 System Commands', value: '`!ffmpeg` - Check FFmpeg status\n`!help` - Tampilkan help ini', inline: false },
+                { name: '🎯 Features', value: '✅ FFmpeg v7 Compatible\n✅ YouTube Music Support\n✅ Interactive Button Controls\n✅ AI Chat dengan OpenRouter\n✅ Real-time Dashboard', inline: false }
+            )
+            .setFooter({ text: 'Kugy Bot v1.1.0 - FFmpeg v7 Ready!' });
+
+        message.reply({ embeds: [embed] });
+    }
+
+    // AI Chat dengan OpenRouter
+    if (message.mentions.has(client.user.id) || message.content.startsWith("!chat ")) {
+        const prompt = message.content
+            .replace(`<@${client.user.id}>`, "")
+            .replace("!chat ", "")
+            .trim();
+
+        try {
+            const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+                    "HTTP-Referer": "https://github.com/kugysoul004/Kugy-discord-test",
+                    "X-Title": "Kugy Discord Bot"
+                },
+                body: JSON.stringify({
+                    model: "anthropic/claude-3.5-sonnet",
+                    messages: [
+                        {
+                            role: "system",
+                            content: "You are Kugy AI, a cute, supportive, and humble Indonesian assistant. Always reply warmly and motivatively. You also help with music bot commands and FFmpeg v7 troubleshooting."
+                        },
+                        { role: "user", content: prompt }
+                    ]
+                })
+            });
+
+            const data = await response.json();
+            const aiReply = data.choices[0].message.content;
+            await message.reply({ content: `<@${message.author.id}> ${aiReply}` });
+        } catch (error) {
+            console.error("❌ AI Chat error:", error);
+            await message.reply("❌ Gagal menghubungi Kugy AI. Coba lagi nanti ya! 🤖");
+        }
+    }
 });
 
 // Button interactions
