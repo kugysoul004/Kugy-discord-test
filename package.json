@@ -1,18 +1,19 @@
 {
   "name": "kugy-bot",
-  "version": "1.1.0",
-  "description": "Discord bot with music functionality using FFmpeg v7 compatible configuration",
-  "main": "index-ffmpeg-v7-compatible.mjs",
+  "version": "1.2.0",
+  "description": "Discord bot with FFmpeg v7 compatibility, music functionality, and AI chat using OpenRouter Llama 3.1 8B (FREE)",
+  "main": "index-ffmpeg-v7-complete.mjs",
   "type": "module",
   "scripts": {
-    "start": "node index-ffmpeg-v7-compatible.mjs",
+    "start": "node index-ffmpeg-v7-complete.mjs",
     "start:legacy": "node Index.mjs",
     "start:local": "node index-without-lavalink.mjs",
-    "dev": "node --watch index-ffmpeg-v7-compatible.mjs",
+    "dev": "node --watch index-ffmpeg-v7-complete.mjs",
     "dev:legacy": "node --watch Index.mjs",
     "dev:local": "node --watch index-without-lavalink.mjs",
     "clean": "./cleanup-and-restart.sh",
-    "ffmpeg:check": "ffmpeg -version"
+    "ffmpeg:check": "ffmpeg -version",
+    "test:ai": "echo 'Testing AI chat with Llama 3.1 8B...'"
   },
   "dependencies": {
     "discord-player": "^7.1.0",
@@ -38,6 +39,9 @@
     "music",
     "ffmpeg-v7",
     "youtube",
+    "ai-chat",
+    "openrouter",
+    "llama",
     "nodejs"
   ],
   "author": "KugySoul",
